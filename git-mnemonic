@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import sys
+import git_mnemonic
+
+# TODO - proper parser
+if '-h' in sys.argv or '--help' in sys.argv:
+    print "Usage: git mnemonic [<revision>|<mnemonic>]"
+    print
+    print "Defaults to revision = HEAD"
+    print "Multiple words are assumed to be a mnemonic"
+    sys.exit(0)
+
+# Revision or default revision
+if len(sys.argv) <= 2:
+    ref = 'HEAD'
+    if len(sys.argv) == 2:
+        ref = sys.argv[1]
+    print git_mnemonic.encode(ref)
+else:
+    # Mnemonic to decode
+    print git_mnemonic.decode(" ".join(sys.argv[1:]))
