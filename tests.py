@@ -9,12 +9,11 @@ class GitMnemonicTests(unittest.TestCase):
         self.assertTrue(gm.encode("master"))
 
     def test_decode(self):
-        self.assertTrue(gm.decode("end line grab ding line pot end bear"))
+        self.assertTrue(gm.decode("bis alo ama aha"))
 
     def test_invertible(self):
         once = gm.encode("master")
         self.assertEquals(gm.encode(gm.decode(once)), once)
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(GitMnemonicTests)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.main(verbosity=2)

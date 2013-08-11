@@ -6,4 +6,4 @@ python:
   - "2.6"
   - "2.5"
   - "pypy"
-script: ./tests.py
+script: ./ci.sh

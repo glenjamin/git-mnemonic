@@ -23,6 +23,8 @@ From inside a git repository
 Install
 -------
 
+    pip install git-mnemonic
+
 TODO
 ----
 

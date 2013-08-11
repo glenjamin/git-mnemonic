@@ -5,7 +5,7 @@ import git_mnemonic
 # TODO - proper parser
 if '-h' in sys.argv or '--help' in sys.argv:
     print("Usage: git mnemonic [<revision>|<mnemonic>]")
-    print()
+    print("")
     print("Defaults to revision = HEAD")
     print("Multiple words are assumed to be a mnemonic")
     sys.exit(0)
