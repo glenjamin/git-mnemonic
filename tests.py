@@ -16,4 +16,8 @@ class GitMnemonicTests(unittest.TestCase):
         self.assertEquals(gm.encode(gm.decode(once)), once)
 
 if __name__ == '__main__':
-    unittest.main(verbosity=2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(GitMnemonicTests)
+    results = unittest.TextTestRunner(verbosity=2).run(suite)
+    if not results.wasSuccessful():
+        import sys
+        sys.exit(1)
