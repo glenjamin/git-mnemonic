@@ -3,6 +3,8 @@ git mnemonic
 
 Speakable, rememberable translations for git ref hashes
 
+[![Build Status](https://travis-ci.org/glenjamin/git-mnemonic.png)](https://travis-ci.org/glenjamin/git-mnemonic)
+
 Usage
 -----
 

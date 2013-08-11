@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='git-mnemonic',
-    version='0.1.0dev',
+    version='0.1.0',
     description='Human friendly git hashes',
     author='Glen Mailer',
     author_email='glenjamin@gmail.com',
