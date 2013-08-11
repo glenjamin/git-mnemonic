@@ -1,42 +1,44 @@
 max_size = 2
-words = {
-    'a': 'any',
-    'b': 'bear',
-    'c': 'club',
-    'd': 'ding',
-    'e': 'end',
-    'f': 'for',
-    '0': 'grab',
-    '1': 'hi',
-    '2': 'imp',
-    '3': 'jam',
-    '4': 'kin',
-    '5': 'line',
-    '6': 'met',
-    '7': 'no',
-    '8': 'on',
-    '9': 'pot',
-    '0': 'quit',
-    'aa': 'rich',
-    'bb': 'sit',
-    'cc': 'tin',
-    'dd': 'up',
-    'ee': 'vat',
-    'ff': 'will',
-    '00': 'xray',
-    '11': 'yes',
-    '22': 'zoo',
-    '33': 'axe',
-    '44': 'bee',
-    '55': 'cat',
-    '66': 'deer',
-    '77': 'elk',
-    '88': 'fire',
-    '99': 'gym',
-}
-chars = dict((v, k) for (k, v) in words.iteritems())
+words = [
+'any',
+'bear',
+'club',
+'ding',
+'end',
+'for',
+'grab',
+'hi',
+'imp',
+'jam',
+'kin',
+'line',
+'met',
+'no',
+'on',
+'pot',
+'quit',
+'rich',
+'sit',
+'tin',
+'up',
+'vat',
+'will',
+'xray',
+'yes',
+'zoo',
+'axe',
+'bee',
+'cat',
+'deer',
+'elk',
+'fire',
+'gym',
+]
+
+char2word = dict( (hex(i)[2:], w) for (i, w) in enumerate(words) )
+word2char = dict( (v, k) for (k, v) in char2word.iteritems() )
 
 def raw_encode(char):
-    return words.get(char, False)
+    return char2word.get(char, False)
 def raw_decode(word):
-    return chars.get(word, False)
+    return word2char.get(word, False)

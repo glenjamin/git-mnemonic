@@ -8,12 +8,13 @@ def debug(msg, obj):
     if os.environ.get('GIT_DEBUG', False):
         print msg, obj
 
-def encode(ref):
+def encode(rev, abbrev=8):
     "Take a git revision and turn it into a mnemonic"
-    revision = clean_revision(ref)
+    revision = clean_revision(rev, abbrev=abbrev)
     chars = list(revision)
     mnemonic = []
     while len(chars):
+        # Attempt to encode the longest chunk we can each time
         for size in xrange(t.max_size, 0, -1):
             chunk = "".join(chars[0:size])
             debug("trying to match", chunk)
@@ -28,10 +29,14 @@ def encode(ref):
 
 def decode(mnemonic):
     "Take a mnemonic and turn it into a git revision"
-    return "".join(map(t.raw_decode, mnemonic.split(" ")))
+    short = "".join(map(t.raw_decode, mnemonic.split(" ")))
+    return clean_revision(short)
 
-def clean_revision(ref, length=8):
-    command = ["git", "rev-parse", "--short=%d" % length, "--verify", ref]
+def clean_revision(revision, abbrev=None):
+    command = ["git", "rev-parse"]
+    if abbrev:
+        command.append("--short=%d" % abbrev)
+    command.extend(["--verify", revision])
     debug("command", command)
     rev_parse = subprocess.Popen(
         command,
@@ -41,6 +46,6 @@ def clean_revision(ref, length=8):
     returncode = rev_parse.wait()
 
     if returncode != 0:
-        raise Exception("git revision not found: %s" % ref)
+        raise Exception("git revision not found: %s" % revision)
 
     return rev_parse.stdout.read().strip()
