@@ -1,0 +1,5 @@
+global-include *.py
+include git-mnemonic
+include git_mnemonic/words.txt
+include LICENSE
+include README.md

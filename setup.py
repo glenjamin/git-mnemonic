@@ -10,5 +10,4 @@ setup(
     license='MIT',
     scripts=['git-mnemonic'],
     packages=['git_mnemonic'],
-    package_data={'git_mnemonic': ['words.txt']},
 )

@@ -8,13 +8,18 @@ set -e
 
 # Check that the package is installable
 python setup.py sdist
+echo 'tarball contents:'
+tar tzf `ls dist/*.gz`
 pip install `ls dist/*.gz`
 
-echo 'Testing executable'
 
+echo 'Testing executable'
 
 out=$(git mnemonic)
 echo "mnemonic for HEAD: $out"
 rt=$(git mnemonic $out)
 echo "mnemonic decoded again: $rt"
-[ "a$rt" = `git rev-parse HEAD` ] || echo "ERROR: Hash did not decode"
+if [ "$rt" != `git rev-parse HEAD` ]; then
+  echo "ERROR: Hash did not decode correctly"
+  exit 1
+fi
