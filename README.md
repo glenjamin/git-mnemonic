@@ -24,3 +24,8 @@ Install
 -------
 
 TODO
+----
+
+It'd be really nice to produce a really friendly word list, that contained only
+words that sounded audiably distinct and were easy to spell / type / read.
+It would also be awesome to support multiple spellings of tricky words.
