@@ -36,9 +36,12 @@ words = [
 ]
 
 char2word = dict( (hex(i)[2:], w) for (i, w) in enumerate(words) )
-word2char = dict( (v, k) for (k, v) in char2word.iteritems() )
+word2char = dict( (v, k) for (k, v) in char2word.items() )
 
 def raw_encode(char):
     return char2word.get(char, False)
 def raw_decode(word):
-    return word2char.get(word, False)
+    try:
+        return word2char[word]
+    except KeyError:
+        raise Exception("%s is not valid in a mnemonic" % word)
